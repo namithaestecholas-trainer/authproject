@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Login | SecureAuth{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center align-items-center flex-grow-1">
+    <div class="col-md-6 col-lg-5 col-xl-4">
+        <div class="card shadow-sm border-0 p-4 p-sm-5">
+            <div class="text-center mb-4">
+                <h3 class="fw-bold mb-1">Login</h3>
+                <p class="text-muted small">Please sign in to access your account</p>
+            </div>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger py-2 px-3 small rounded-3 mb-3">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if form.errors and not form.non_field_errors %}
+                    <div class="alert alert-danger py-2 px-3 small rounded-3 mb-3">
+                        Invalid username or password
+                    </div>
+                {% endif %}
+
+                <!-- Username -->
+                <div class="mb-3">
+                    <label class="form-label" for="id_username">Username</label>
+                    {{ form.username }}
+                    {% for error in form.username.errors %}
+                        <div class="text-danger small mt-1">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Password -->
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <label class="form-label mb-0" for="id_password">Password</label>
+                        <a href="{% url 'password_reset' %}" class="small text-decoration-none" style="color: var(--primary-orange); font-weight: 500;">Forgot Password?</a>
+                    </div>
+                    {{ form.password }}
+                    {% for error in form.password.errors %}
+                        <div class="text-danger small mt-1">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" class="btn btn-custom w-100 py-2 mb-3">
+                    Login
+                </button>
+            </form>
+
+            <div class="text-center mt-3">
+                <span class="text-muted small">Don't have an account?</span>
+                <a href="{% url 'register' %}" class="text-decoration-none small fw-semibold" style="color: var(--primary-orange);">Register here</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

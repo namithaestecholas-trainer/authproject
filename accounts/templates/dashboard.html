@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | SecureAuth{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+        <div class="card shadow-sm border-0 p-4 p-md-5">
+            <!-- Header Section -->
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center border-bottom pb-4 mb-4 text-center text-sm-start">
+                <div>
+                    <h2 class="fw-bold mb-1">Welcome, {{ request.user.username }}</h2>
+                    <p class="text-muted mb-0">Email: {{ request.user.email }}</p>
+                </div>
+                <div class="mt-3 mt-sm-0">
+                    <span class="badge bg-success py-2 px-3 rounded-pill">
+                        Active Session
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
