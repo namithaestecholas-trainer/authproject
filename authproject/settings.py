@@ -130,6 +130,6 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "namithanami52727@gmail.com"
-EMAIL_HOST_PASSWORD = "lfii wlin fblx hsgg"
+EMAIL_HOST_PASSWORD = "lfiiwlinfblxhsgg"
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
